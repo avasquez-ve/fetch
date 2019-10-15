@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fetch</title>
+</head>
+<body>
+    <img id="pokemon" src="" height="200">
+    <script>
+        const pokemon = document.querySelector("#pokemon");
+        function renderPokemon(image) {
+            pokemon.setAttribute("src", image);
+        }
+
+        // Ejemplo para obtener data desde API
+        fetch("https://pokeapi.co/api/v2/pokemon/25")
+        .then(response => response.json())
+        .then(pokemon => {
+            //debugger
+            renderPokemon(pokemon.sprites.front_default);
+        })
+
+        // fetch("pokemon.json", {
+        //     // method: "GET",//POST,PUT,DELETE (si es get, todos los valores estan por defectos)
+        //     // headers: {
+        //     //     "Content-Type": "application/json",
+        //     //     "cualquier": "header"
+        //     // },
+        //     // body: JSON.stringify({//Usado para el método POST
+        //     //     name: "Arnell",
+        //     //     age: "24",
+        //     //     favoriteColor: "Pink"
+        //     // })
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     renderPokemon(data.image);
+        // })
+
+        // Ejemplo para obtener una imagen
+        // fetch("pikachu.png")
+        // .then(response => response.blob())
+        // .then(binaryLargeObject => {
+        //     const domString = URL.createObjectURL(binaryLargeObject);
+        //     renderPokemon(domString);
+        // })
+
+    </script>
+</body>
+</html>
